@@ -1,6 +1,6 @@
 import { useEffect, useState, useCallback } from "react";
 import * as priceService from "../services/price";
-import { PriceList } from "../type";
+import { PriceList, Price } from "../type";
 
 interface UsePriceList {
   priceList: PriceList;
@@ -28,8 +28,8 @@ export const usePriceList = (): UsePriceList => {
     );
 
     eventSource.onmessage = ({ data }: MessageEvent<string>) => {
-      const prices = JSON.parse(data);
-      setPriceList({ data: prices });
+      const priceList = JSON.parse(data) as PriceList;
+      setPriceList(priceList);
     };
 
     return () => {
