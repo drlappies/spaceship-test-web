@@ -1,6 +1,6 @@
 import { Card, Text, HStack, Box } from "@chakra-ui/react";
 import { Price } from "../type";
-import { useMemo } from "react";
+import { useCallback, useMemo } from "react";
 
 interface PriceCardProps {
   price: Price;
@@ -11,6 +11,10 @@ const PriceCard = ({ price }: PriceCardProps) => {
     const coin = price.coin;
     return coin.charAt(0).toUpperCase() + coin.slice(1);
   }, [price.coin]);
+
+  const getChangeColor = useCallback(() => {
+    return price.data.usd_24h_change < 0 ? "red" : "green";
+  }, [price.data.usd_24h_change]);
 
   return (
     <Card p={"12px"} border={"1px solid grey"}>
@@ -27,7 +31,7 @@ const PriceCard = ({ price }: PriceCardProps) => {
         </Box>
         <Box>
           <Text color={"grey"}>change: </Text>
-          <Text>{price.data.usd_24h_change}</Text>
+          <Text color={getChangeColor()}>{price.data.usd_24h_change}</Text>
         </Box>
       </HStack>
     </Card>
