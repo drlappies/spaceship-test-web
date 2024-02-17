@@ -13,7 +13,7 @@ const PriceCard = ({ price }: PriceCardProps) => {
   }, [price.coin]);
 
   return (
-    <Card p={"12px"}>
+    <Card p={"12px"} border={"1px solid grey"}>
       <Text fontWeight={"bold"} fontSize={"xl"}>
         {upperCasedCoinName}
       </Text>
