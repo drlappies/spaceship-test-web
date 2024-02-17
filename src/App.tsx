@@ -12,8 +12,9 @@ function App() {
         h={"full"}
         border={"5px solid lightgreen"}
         p={"24px"}
+        overflow={"auto"}
       >
-        <Text fontWeight={"semibold"} fontSize={"xl"} my={"4px"}>
+        <Text fontWeight={"semibold"} fontSize={"xl"}>
           Cryptocurrency Realtime Price
         </Text>
         <SimpleGrid columns={[1, 1, 2, 3, 3, 3]} gap={"24px"}>
